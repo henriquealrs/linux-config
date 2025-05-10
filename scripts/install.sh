@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# If problems refer to https://github.com/elifouts/Dotfiles.git
+
 sudo pacman -Sy --noconfirm hyprland neovim waybar swaync
 sudo pacman -Sy --noconfirm --needed git
 sudo pacman -Sy --noconfirm --needed python python-pip python-pywalfox
@@ -16,9 +18,8 @@ yay -Y --gendb
 yay -Syu --devel
 yay -Y --devel --save
 
-yay -S --noconfirm --needed wl-clipboard
+yay -S --noconfirm --needed wl-clipboard otf-codenewroman-nerd hyprpicker blueman bluez pywal
 
-sudo pacman -S --noconfirm --needed 
 
 temp=$( realpath "$0"  )
 dirname "$temp"
@@ -28,3 +29,9 @@ cp -r $dirname/../.config/waybar ~/.config
 cp -r $dirname/../.config/wofi ~/.config
 cp -r $dirname/../.config/ghostty ~/.config
 cp -r $dirname/../.config/swaync ~/.config
+cp -r $dirname/../wallpapers ~/
+
+
+$dirname/swayncinstall.sh
+$dirname/waybarinstall.sh
+$dirname/wofiinstall.sh
