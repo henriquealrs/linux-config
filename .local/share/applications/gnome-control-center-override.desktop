@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GNOME Settings
+Comment=Launch GNOME Control Center under KDE
+Icon=preferences-system
+Exec=env XDG_CURRENT_DESKTOP=GNOME gnome-control-center
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Settings;X-GNOME-Settings-Panel;
+StartupNotify=true
