@@ -5,7 +5,7 @@
 sudo pacman -Sy --noconfirm hyprland neovim waybar swaync fish
 sudo pacman -Sy --noconfirm --needed git
 sudo pacman -Sy --noconfirm --needed python python-pip python-pywalfox
-sudo pacman -Sy --noconfirm --needed grim slurp pulsemixer
+sudo pacman -Sy --noconfirm --needed grim slurp pulsemixer wlsunset
 
 # Install yay
 sudo pacman -S --needed --noconfirm git base-devel
@@ -30,6 +30,7 @@ cp -r $dirname/../.config/wofi ~/.config
 cp -r $dirname/../.config/ghostty ~/.config
 cp -r $dirname/../.config/swaync ~/.config
 cp -r $dirname/../wallpapers ~/
+cp -r $dirname/../toggle_nightlight.sh ~
 
 
 $dirname/swayncinstall.sh

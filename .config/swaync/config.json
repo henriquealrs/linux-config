@@ -79,7 +79,7 @@
                 },
                 {
                     "label":"󰤄",
-                    "command": "swaync-client -d",
+                    "command": "bash /home/hlustosa/toggle_nightlight.sh",
                     "type":"toggle"
                 },
 
