@@ -19,7 +19,7 @@ yay -Syu --devel
 yay -Y --devel --save
 
 yay -S --noconfirm --needed wl-clipboard otf-codenewroman-nerd hyprpicker blueman bluez pywal
-
+yay -S --noconfirm --needed zen-browzer
 
 temp=$( realpath "$0"  )
 dirname "$temp"
