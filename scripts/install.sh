@@ -22,17 +22,18 @@ yay -S --noconfirm --needed wl-clipboard otf-codenewroman-nerd hyprpicker bluema
 yay -S --noconfirm --needed zen-browzer
 
 temp=$( realpath "$0"  )
-dirname "$temp"
-
-cp -r $dirname/../.config/hypr ~/.config
-cp -r $dirname/../.config/waybar ~/.config
-cp -r $dirname/../.config/wofi ~/.config
-cp -r $dirname/../.config/ghostty ~/.config
-cp -r $dirname/../.config/swaync ~/.config
-cp -r $dirname/../wallpapers ~/
-cp -r $dirname/../toggle_nightlight.sh ~
+dir=$(dirname "$temp")
 
 
-$dirname/swayncinstall.sh
-$dirname/waybarinstall.sh
-$dirname/wofiinstall.sh
+cp -r $dir/../.config/hypr ~/.config
+cp -r $dir/../.config/waybar ~/.config
+cp -r $dir/../.config/wofi ~/.config
+cp -r $dir/../.config/ghostty ~/.config
+cp -r $dir/../.config/swaync ~/.config
+cp -r $dir/../wallpapers ~/
+cp -r $dir/../toggle_nightlight.sh ~
+
+
+$dir/swayncinstall.sh
+$dir/waybarinstall.sh
+$dir/wofiinstall.sh

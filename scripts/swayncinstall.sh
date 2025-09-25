@@ -1,8 +1,8 @@
 #!/bin/bash
 
 temp=$( realpath "$0"  )
-dirname "$temp"
-
+dir=$(dirname "$temp")
+echo $dir
 yay -S --noconfirm --needed gvfs pywal
-wal -i $dirname/wallpapers/pywallpaper.jpg
-sudo cp -a $dirname/.config/swaync ~/.config/
+wal -i $dir/../wallpapers/
+sudo cp -a $dir/../.config/swaync ~/.config/

@@ -22,6 +22,7 @@ fi
 
 # Wallpaper directory
 WALLPAPER_DIR="$HOME/.config/hypr/wallpapers"
+mkdir -p $WALLPAPER_DIR
 cp -r $SCRIPT_DIR/../wallpapers $WALLPAPER_DIR
 
 # Script directory

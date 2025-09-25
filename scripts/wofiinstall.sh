@@ -1,8 +1,8 @@
 #!/bin/bash
 
 temp=$( realpath "$0"  )
-dirname "$temp"
+dir=$(dirname "$temp")
 
-# yay -S wofi pywal
-wal -i $dirname/wallpapers/pywallpaper.jpg
-sudo cp -a $dirname/.config/wofi ~/.config/
+yay -S wofi pywal --noconfirm --needed
+wal -i $dirname/wallpapers/
+sudo cp -a $dir/../.config/wofi ~/.config/
