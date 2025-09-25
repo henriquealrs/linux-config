@@ -2,7 +2,7 @@
 
 # If problems refer to https://github.com/elifouts/Dotfiles.git
 
-sudo pacman -Sy --noconfirm hyprland neovim waybar swaync fish
+sudo pacman -Sy --noconfirm hyprland neovim waybar swaync ghostty fish
 sudo pacman -Sy --noconfirm --needed git
 sudo pacman -Sy --noconfirm --needed python python-pip python-pywalfox
 sudo pacman -Sy --noconfirm --needed grim slurp pulsemixer wlsunset
