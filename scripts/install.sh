@@ -5,8 +5,9 @@ sudo pacman -Syu
 
 sudo pacman -Sy --noconfirm --needed hyprland neovim waybar swaync ghostty fish
 sudo pacman -Sy --noconfirm --needed git
-sudo pacman -Sy --noconfirm --needed python python-pip python-pywalfox
+sudo pacman -Sy --noconfirm --needed python python-pip python-pywalfox nodejs npm
 sudo pacman -Sy --noconfirm --needed grim slurp pulsemixer wlsunset ripgrep less 
+sudo pacman -Sy --noconfirm --needed cmake ninja make
 
 # Install yay
 if command -v yay &> /dev/null; then
@@ -25,7 +26,7 @@ else
 fi
 
 yay -S --noconfirm --needed wl-clipboard otf-codenewroman-nerd hyprpicker blueman bluez pywal
-# yay -S --noconfirm --needed zen-browser
+yay -S --noconfirm --needed zen-browser
 
 temp=$( realpath "$0"  )
 dir=$(dirname "$temp")

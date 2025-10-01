@@ -70,7 +70,7 @@ Description=Change wallpaper every 30 minutes
 
 [Timer]
 OnBootSec=2min
-OnUnitActiveSec=1min
+OnUnitActiveSec=10min
 Persistent=true
 
 [Install]
