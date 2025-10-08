@@ -3,8 +3,8 @@
 # If problems refer to https://github.com/elifouts/Dotfiles.git
 sudo pacman -Syu
 
-sudo pacman -Sy --noconfirm --needed hyprland neovim waybar swaync ghostty fish
-sudo pacman -Sy --noconfirm --needed git
+sudo pacman -Sy --noconfirm --needed hyprland neovim waybar swaync ghostty fish networkmanager
+sudo pacman -Sy --noconfirm --needed git git-lfs
 sudo pacman -Sy --noconfirm --needed python python-pip python-pywalfox nodejs npm
 sudo pacman -Sy --noconfirm --needed grim slurp pulsemixer wlsunset ripgrep less 
 sudo pacman -Sy --noconfirm --needed cmake ninja make
@@ -40,6 +40,8 @@ cp -r $dir/../.config/swaync ~/.config
 cp -r $dir/../wallpapers ~/
 cp -r $dir/../toggle_nightlight.sh ~
 
+mkdir -p ~/.local/share/applications
+cp $dir/../.local/share/applications/* ~/.local/share/applications/ 
 
 $dir/swayncinstall.sh
 $dir/waybarinstall.sh
