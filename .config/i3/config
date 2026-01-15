@@ -1,0 +1,109 @@
+# i3 config translated from Hyprland settings
+
+set $mod Mod4
+set $term x-terminal-emulator
+set $fileManager nautilus
+set $menu rofi -show drun
+set $browser zen-browser --password-store=gnome
+
+font pango:DejaVu Sans Mono 10
+
+# Behavior
+focus_follows_mouse yes
+floating_modifier $mod
+
+default_border pixel 0
+# default_floating_border pixel 1
+# If using i3-gaps, uncomment:
+# gaps inner 1
+# gaps outer 0
+
+# Autostart helpers
+exec --no-startup-id setxkbmap -layout br
+exec --no-startup-id dunst
+exec --no-startup-id ~/.config/i3/dynamic-monitor.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/i3/random_wallpaper.sh
+
+# Keybindings
+bindsym $mod+Return exec $term
+bindsym $mod+q kill
+bindsym $mod+Shift+q exec --no-startup-id "i3-msg exit"
+bindsym $mod+f exec $fileManager
+bindsym $mod+v floating toggle
+bindsym $mod+r exec --no-startup-id $menu
+bindsym $mod+p layout toggle split
+bindsym $mod+j layout toggle tabbed stacking
+bindsym $mod+b exec $browser
+bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/dynamic-monitor.sh
+bindsym $mod+Shift+k exec --no-startup-id ~/.config/i3/dynamic-monitor.sh
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/screenshot.sh
+bindsym $mod+Shift+n exec --no-startup-id dunstctl set-paused toggle
+bindsym $mod+c exec gnome-calendar
+
+# Change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Switch workspaces
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move windows to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Reload / restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# Floating toggle
+bindsym $mod+Shift+space floating toggle
+
+# Scroll workspaces
+bindsym $mod+button4 workspace prev
+bindsym $mod+button5 workspace next
+
+# Resize with keyboard
+bindsym $mod+Mod1+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Mod1+Right resize grow width 10 px or 10 ppt
+bindsym $mod+Mod1+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Mod1+Down resize grow height 10 px or 10 ppt
+
+# Multimedia keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 10%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
+
+# Media controls
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
