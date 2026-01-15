@@ -15,6 +15,10 @@ sudo apt install -y \
   playerctl \
   brightnessctl \
   pulseaudio-utils \
+  alacritty \
+  rustup \
+  tmux \
+  curl \
   x11-xserver-utils
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -30,3 +34,5 @@ chmod +x "$HOME/.config/i3/random_wallpaper.sh"
 chmod +x "$HOME/.config/i3/dynamic-monitor.sh"
 chmod +x "$HOME/.config/i3/screenshot.sh"
 chmod +x "$HOME/.config/polybar/launch.sh"
+
+curl -fsSL https://github.com/zen-browser/updates-server/raw/refs/heads/main/install.sh | sh
