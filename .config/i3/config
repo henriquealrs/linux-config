@@ -1,10 +1,10 @@
 # i3 config translated from Hyprland settings
 
 set $mod Mod4
-set $term x-terminal-emulator
+set $term alacritty
 set $fileManager nautilus
 set $menu rofi -show drun
-set $browser zen-browser --password-store=gnome
+set $browser zen --password-store=gnome
 
 font pango:DejaVu Sans Mono 10
 
