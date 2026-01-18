@@ -1,0 +1,6 @@
+[Unit]
+Description=Auto switch display eDP and HDMI
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/autodisplay_ubuntu.sh

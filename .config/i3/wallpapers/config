@@ -19,9 +19,6 @@ default_border pixel 0
 # gaps outer 0
 
 # Autostart helpers
-exec --no-startup-id gsd-xsettings &
-exec --no-startup-id /usr/libexec/xdg-desktop-portal &
-exec --no-startup-id /usr/libexec/xdg-desktop-portal-gnome &
 exec --no-startup-id setxkbmap -layout br
 exec --no-startup-id dunst
 exec --no-startup-id picom --config ~/.config/picom/picom.conf

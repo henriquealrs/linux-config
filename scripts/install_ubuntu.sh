@@ -19,7 +19,7 @@ sudo apt install -y \
   rustup \
   tmux \
   curl \
-  x11-xserver-utils
+  x11-xserver-utils 
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -35,4 +35,16 @@ chmod +x "$HOME/.config/i3/dynamic-monitor.sh"
 chmod +x "$HOME/.config/i3/screenshot.sh"
 chmod +x "$HOME/.config/polybar/launch.sh"
 
-curl -fsSL https://github.com/zen-browser/updates-server/raw/refs/heads/main/install.sh | sh
+# curl -fsSL https://github.com/zen-browser/updates-server/raw/refs/heads/main/install.sh | sh
+
+
+# Configure auto-display
+mkdir -p "$HOME/.local/bin"
+cp "$ROOT_DIR/autodisplay_ubuntu.sh" "$HOME/.local/bin/"
+mkdir -p "$HOME/.config/systemd/user"
+cp -r "$ROOT_DIR/../.config/systemd/user/auto-display.service" "$HOME/.config/systemd/user/"
+cp -r "$ROOT_DIR/../.config/systemd/user/auto-display.timer" "$HOME/.config/systemd/user/"
+# Enable and Start
+systemctl --user daemon-reexec
+systemctl --user daemon-reload
+systemctl --user enable --now auto-display.timer
