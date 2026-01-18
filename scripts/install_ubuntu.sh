@@ -47,8 +47,10 @@ cp -r "$ROOT_DIR/../.config/systemd/user/auto-display.service" "$HOME/.config/sy
 cp -r "$ROOT_DIR/../.config/systemd/user/auto-display.timer" "$HOME/.config/systemd/user/"
 cp -r "$ROOT_DIR/../.config/systemd/user/random-wallpaper.service" "$HOME/.config/systemd/user/"
 cp -r "$ROOT_DIR/../.config/systemd/user/random-wallpaper.timer" "$HOME/.config/systemd/user/"
+cp -r "$ROOT_DIR/../.config/systemd/user/tmux*" "$HOME/.config/systemd/user/"
 # Enable and Start
 systemctl --user daemon-reexec
 systemctl --user daemon-reload
 systemctl --user enable --now auto-display.timer
+systemctl --user enable --now random-wallpaper.timer
 systemctl --user enable --now random-wallpaper.timer

@@ -1,0 +1,14 @@
+[Unit]
+Description=Persistent tmux session
+After=default.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux new-session -d -s dev
+ExecStop=/usr/bin/tmux kill-session -t dev
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target
+

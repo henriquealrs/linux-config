@@ -1,0 +1,12 @@
+[Unit]
+Description=Persistent tmux dev session
+After=default.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=%h/.local/bin/tmux-dev.sh
+ExecStop=/usr/bin/tmux kill-session -t dev
+
+[Install]
+WantedBy=default.target
