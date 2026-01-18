@@ -1,0 +1,10 @@
+[Unit]
+Description=Run ramdom wallpapers every 20 minutes
+
+[Timer]
+OnBootSec=20m
+OnUnitActiveSec=20m
+AccuracySec=1m
+
+[Install]
+WantedBy=timers.target

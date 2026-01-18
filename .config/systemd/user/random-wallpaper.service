@@ -1,0 +1,6 @@
+[Unit]
+Description=Randomly changes wallpapers
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/random_wallpaper.sh
