@@ -53,4 +53,5 @@ systemctl --user daemon-reexec
 systemctl --user daemon-reload
 systemctl --user enable --now auto-display.timer
 systemctl --user enable --now random-wallpaper.timer
-systemctl --user enable --now random-wallpaper.timer
+systemctl --user enable --now tmux-dev.service
+
