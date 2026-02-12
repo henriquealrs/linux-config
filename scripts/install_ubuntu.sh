@@ -19,13 +19,16 @@ sudo apt install -y \
   rustup \
   tmux \
   curl \
-  x11-xserver-utils 
+  x11-xserver-utils \
+  xsel \
+  git 
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 rsync -a --delete "$ROOT_DIR/../.config/i3/" "$HOME/.config/i3/"
 rsync -a --delete "$ROOT_DIR/../.config/dunst/" "$HOME/.config/dunst/"
 rsync -a --delete "$ROOT_DIR/../.config/polybar/" "$HOME/.config/polybar/"
+rsync -a --delete "$ROOT_DIR/../.config/tmux/" "$HOME/.config/tmux/"
 
 mkdir -p "$HOME/.config/i3/wallpapers"
 rsync -a --delete "$ROOT_DIR/../wallpapers/" "$HOME/.config/i3/wallpapers/"
@@ -37,6 +40,9 @@ chmod +x "$HOME/.config/polybar/launch.sh"
 
 mv "$HOME/.config/i3/random_wallpaper.sh" "$HOME/.local/bin/"
 # curl -fsSL https://github.com/zen-browser/updates-server/raw/refs/heads/main/install.sh | sh
+
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 # Configure auto-display

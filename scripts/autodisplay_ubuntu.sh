@@ -1,29 +1,28 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Get internal display (prefer eDP, fallback to LVDS)
-# INTERNAL=$(xrandr --query \
-#   | awk '/ connected/ && ($1 ~ /^eDP/ || $1 ~ /^LVDS/) { print $1; exit }')
-INTERNAL=eDP
+# Detect internal display (eDP or LVDS)
+INTERNAL=$(xrandr --query \
+  | awk '/ connected/ && ($1 ~ /^eDP/ || $1 ~ /^LVDS/) { print $1; exit }')
 
-# Get first connected HDMI output
-HDMI=$(xrandr --query \
-  | awk '/ connected/ && $1 ~ /^HDMI/ { print $1; exit }')
+# Detect first connected external display
+EXTERNAL=$(xrandr --query \
+  | awk '/ connected/ && !($1 ~ /^eDP/ || $1 ~ /^LVDS/) { print $1; exit }')
 
-# Safety checks (because xrandr can lie at login)
+echo "Internal: ${INTERNAL:-none}"
+echo "External: ${EXTERNAL:-none}"
+
 if [[ -z "${INTERNAL:-}" ]]; then
-  echo "No internal display found" >&2
+  echo "No internal display found." >&2
   exit 0
 fi
 
-if [[ -n "${HDMI:-}" ]]; then
-  # HDMI connected → external only
-  xrandr \
-    --output "$INTERNAL" --off
-  xrandr --output "$HDMI" --auto 
+if [[ -n "${EXTERNAL:-}" ]]; then
+  echo "External monitor detected → switching to external only."
+  xrandr --output "$INTERNAL" --off
+  xrandr --output "$EXTERNAL" --auto --primary
 else
-  # No HDMI → internal only
-  xrandr \
-    --output "$INTERNAL" --auto 
+  echo "No external monitor → switching to internal only."
+  xrandr --output "$INTERNAL" --auto --primary
 fi
 
