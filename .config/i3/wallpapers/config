@@ -36,6 +36,7 @@ bindsym $mod+r exec --no-startup-id $menu
 bindsym $mod+p layout toggle split
 bindsym $mod+j layout toggle tabbed stacking
 bindsym $mod+b exec $browser
+bindsym $mod+l exec --no-startup-id ~/.local/bin/lock_screen.sh
 bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/dynamic-monitor.sh
 bindsym $mod+Shift+k exec --no-startup-id ~/.config/i3/dynamic-monitor.sh
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/screenshot.sh

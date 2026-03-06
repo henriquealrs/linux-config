@@ -6,7 +6,7 @@ sudo pacman -Syu
 sudo pacman -Sy --noconfirm --needed hyprland neovim waybar swaync ghostty fish networkmanager
 sudo pacman -Sy --noconfirm --needed git git-lfs
 sudo pacman -Sy --noconfirm --needed python python-pip python-pywalfox nodejs npm
-sudo pacman -Sy --noconfirm --needed grim slurp pulsemixer wlsunset ripgrep less 
+sudo pacman -Sy --noconfirm --needed grim slurp pulsemixer wlsunset ripgrep less i3lock imagemagick
 sudo pacman -Sy --noconfirm --needed cmake ninja make
 sudo pacman -Sy --noconfirm --needed tmux
 
@@ -41,6 +41,9 @@ cp -r $dir/../.config/swaync ~/.config
 cp -r $dir/../.config/tmux ~/.config
 cp -r $dir/../wallpapers ~/
 cp -r $dir/../toggle_nightlight.sh ~
+
+mkdir -p ~/.local/bin
+install -m 755 "$dir/lock_screen.sh" ~/.local/bin/lock_screen.sh
 
 mkdir -p ~/.config/tmux/plugins
 if [[ -d ~/.config/tmux/plugins/tpm/.git ]]; then

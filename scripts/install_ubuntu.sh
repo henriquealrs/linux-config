@@ -11,6 +11,8 @@ sudo apt install -y \
   picom \
   rsync \
   maim \
+  i3lock \
+  imagemagick \
   xclip \
   playerctl \
   brightnessctl \
@@ -40,6 +42,7 @@ chmod +x "$HOME/.config/polybar/launch.sh"
 
 mkdir -p "$HOME/.local/bin"
 mv "$HOME/.config/i3/random_wallpaper.sh" "$HOME/.local/bin/"
+install -m 755 "$ROOT_DIR/lock_screen.sh" "$HOME/.local/bin/lock_screen.sh"
 # curl -fsSL https://github.com/zen-browser/updates-server/raw/refs/heads/main/install.sh | sh
 
 mkdir -p "$HOME/.config/tmux/plugins"
