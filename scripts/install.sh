@@ -8,6 +8,7 @@ sudo pacman -Sy --noconfirm --needed git git-lfs
 sudo pacman -Sy --noconfirm --needed python python-pip python-pywalfox nodejs npm
 sudo pacman -Sy --noconfirm --needed grim slurp pulsemixer wlsunset ripgrep less 
 sudo pacman -Sy --noconfirm --needed cmake ninja make
+sudo pacman -Sy --noconfirm --needed tmux
 
 # Install yay
 if command -v yay &> /dev/null; then
@@ -37,8 +38,32 @@ cp -r $dir/../.config/waybar ~/.config
 cp -r $dir/../.config/wofi ~/.config
 cp -r $dir/../.config/ghostty ~/.config
 cp -r $dir/../.config/swaync ~/.config
+cp -r $dir/../.config/tmux ~/.config
 cp -r $dir/../wallpapers ~/
 cp -r $dir/../toggle_nightlight.sh ~
+
+mkdir -p ~/.config/tmux/plugins
+if [[ -d ~/.config/tmux/plugins/tpm/.git ]]; then
+  git -C ~/.config/tmux/plugins/tpm pull --ff-only
+else
+  git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+fi
+
+# Install tmux plugins from ~/.config/tmux/tmux.conf non-interactively.
+if [[ -x ~/.config/tmux/plugins/tpm/bin/install_plugins ]]; then
+  TMUX_PLUGIN_MANAGER_PATH=~/.config/tmux/plugins \
+    ~/.config/tmux/plugins/tpm/bin/install_plugins ~/.config/tmux/tmux.conf
+fi
+
+mkdir -p ~/.config/systemd/user
+cp -r $dir/../.config/systemd/user/tmux.service ~/.config/systemd/user/
+cp -r $dir/../.config/systemd/user/tmux-dev.service ~/.config/systemd/user/
+systemctl --user daemon-reload
+if [[ -x ~/.local/bin/tmux-dev.sh ]]; then
+  systemctl --user enable --now tmux-dev.service
+else
+  systemctl --user enable --now tmux.service
+fi
 
 mkdir -p ~/.local/share/applications
 cp $dir/../.local/share/applications/* ~/.local/share/applications/ 

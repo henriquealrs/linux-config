@@ -9,7 +9,7 @@ log() {
 
 sync_tree() {
   local rel="$1"
-  local src="$ROOT_DIR/$rel"
+  local src="$ROOT_DIR/../$rel"
   local dest="$HOME/$rel"
 
   if [[ ! -d "$src" ]]; then
@@ -25,6 +25,7 @@ sync_tree() {
 sync_tree ".config/i3"
 sync_tree ".config/dunst"
 sync_tree ".config/polybar"
+sync_tree ".config/tmux"
 
 mkdir -p "$HOME/.config/i3/wallpapers"
 rsync -a --delete "$ROOT_DIR/../wallpapers/" "$HOME/.config/i3/wallpapers/"

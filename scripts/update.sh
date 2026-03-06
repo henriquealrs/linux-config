@@ -19,7 +19,7 @@ require_tool() {
 
 sync_tree() {
   local rel="$1"
-  local src="$ROOT_DIR/$rel"
+  local src="$ROOT_DIR/../$rel"
   local dest="$HOME/$rel"
 
   if [[ ! -d "$src" ]]; then
@@ -35,7 +35,7 @@ sync_tree() {
 copy_file() {
   local rel="$1"
   local mode="${2:-644}"
-  local src="$ROOT_DIR/$rel"
+  local src="$ROOT_DIR/../$rel"
   local dest="$HOME/$rel"
 
   if [[ ! -f "$src" ]]; then
@@ -55,6 +55,7 @@ sync_tree ".config/ghostty"
 sync_tree ".config/waybar"
 sync_tree ".config/wofi"
 sync_tree ".config/swaync"
+sync_tree ".config/tmux"
 sync_tree ".local/share/applications"
 sync_tree "wallpapers"
 
