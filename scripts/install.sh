@@ -3,7 +3,7 @@
 # If problems refer to https://github.com/elifouts/Dotfiles.git
 sudo pacman -Syu
 
-sudo pacman -Sy --noconfirm --needed hyprland neovim waybar swaync ghostty fish networkmanager
+sudo pacman -Sy --noconfirm --needed hyprland neovim waybar swaync ghostty fish zsh networkmanager
 sudo pacman -Sy --noconfirm --needed git git-lfs
 sudo pacman -Sy --noconfirm --needed python python-pip python-pywalfox nodejs npm
 sudo pacman -Sy --noconfirm --needed grim slurp pulsemixer wlsunset ripgrep less i3lock imagemagick
@@ -41,9 +41,16 @@ cp -r $dir/../.config/swaync ~/.config
 cp -r $dir/../.config/tmux ~/.config
 cp -r $dir/../wallpapers ~/
 cp -r $dir/../toggle_nightlight.sh ~
+install -m 644 "$dir/../.zshrc" ~/.zshrc
 
 mkdir -p ~/.local/bin
 install -m 755 "$dir/lock_screen.sh" ~/.local/bin/lock_screen.sh
+
+if [[ -d ~/.oh-my-zsh/.git ]]; then
+  git -C ~/.oh-my-zsh pull --ff-only
+else
+  git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+fi
 
 mkdir -p ~/.config/tmux/plugins
 if [[ -d ~/.config/tmux/plugins/tpm/.git ]]; then

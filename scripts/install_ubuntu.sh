@@ -6,6 +6,7 @@ sudo apt install -y \
   i3 \
   polybar \
   dunst \
+  fonts-powerline \
   rofi \
   feh \
   picom \
@@ -20,6 +21,7 @@ sudo apt install -y \
   alacritty \
   rustup \
   tmux \
+  zsh \
   curl \
   x11-xserver-utils \
   xsel \
@@ -43,7 +45,14 @@ chmod +x "$HOME/.config/polybar/launch.sh"
 
 mkdir -p "$HOME/.local/bin"
 install -m 755 "$ROOT_DIR/lock_screen.sh" "$HOME/.local/bin/lock_screen.sh"
+install -m 644 "$ROOT_DIR/../.zshrc" "$HOME/.zshrc"
 # curl -fsSL https://github.com/zen-browser/updates-server/raw/refs/heads/main/install.sh | sh
+
+if [[ -d "$HOME/.oh-my-zsh/.git" ]]; then
+  git -C "$HOME/.oh-my-zsh" pull --ff-only
+else
+  git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
+fi
 
 mkdir -p "$HOME/.config/tmux/plugins"
 if [[ -d "$HOME/.config/tmux/plugins/tpm/.git" ]]; then
