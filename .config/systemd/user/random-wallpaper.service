@@ -3,4 +3,4 @@ Description=Randomly changes wallpapers
 
 [Service]
 Type=oneshot
-ExecStart=%h/.local/bin/random_wallpaper.sh
+ExecStart=%h/.config/i3/random_wallpaper.sh

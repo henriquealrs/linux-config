@@ -32,7 +32,7 @@ rsync -a --delete "$ROOT_DIR/../wallpapers/" "$HOME/.config/i3/wallpapers/"
 log "Synced wallpapers -> $HOME/.config/i3/wallpapers"
 
 chmod +x "$HOME/.config/i3/random_wallpaper.sh"
-# chmod +x "$HOME/.config/i3/dynamic-monitor.sh"
+chmod +x "$HOME/.config/i3/dynamic-monitor.sh"
 chmod +x "$HOME/.config/i3/screenshot.sh"
 chmod +x "$HOME/.config/polybar/launch.sh"
 
