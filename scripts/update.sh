@@ -10,6 +10,38 @@ log() {
   printf '[update] %s\n' "$*"
 }
 
+setup_tmux() {
+  mkdir -p "$HOME/.config/tmux/plugins"
+
+  if [[ -d "$HOME/.config/tmux/plugins/tpm/.git" ]]; then
+    git -C "$HOME/.config/tmux/plugins/tpm" pull --ff-only
+  else
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm"
+  fi
+
+  if [[ -x "$HOME/.config/tmux/plugins/tpm/bin/install_plugins" ]]; then
+    TMUX_PLUGIN_MANAGER_PATH="$HOME/.config/tmux/plugins" \
+      "$HOME/.config/tmux/plugins/tpm/bin/install_plugins" "$HOME/.config/tmux/tmux.conf"
+  fi
+
+  install -Dm644 "$ROOT_DIR/../.config/systemd/user/tmux.service" \
+    "$HOME/.config/systemd/user/tmux.service"
+  install -Dm644 "$ROOT_DIR/../.config/systemd/user/tmux-dev.service" \
+    "$HOME/.config/systemd/user/tmux-dev.service"
+
+  if ! command -v systemctl >/dev/null 2>&1; then
+    log "Skipping tmux user units (systemctl not found)"
+    return
+  fi
+
+  systemctl --user daemon-reload
+  if [[ -x "$HOME/.local/bin/tmux-dev.sh" ]]; then
+    systemctl --user enable --now tmux-dev.service
+  else
+    systemctl --user enable --now tmux.service
+  fi
+}
+
 require_tool() {
   if ! command -v "$1" >/dev/null 2>&1; then
     log "Missing required tool: $1"
@@ -49,6 +81,7 @@ copy_file() {
 
 require_tool rsync
 require_tool install
+require_tool git
 
 sync_tree ".config/hypr"
 sync_tree ".config/ghostty"
@@ -60,5 +93,6 @@ sync_tree ".local/share/applications"
 sync_tree "wallpapers"
 
 copy_file "toggle_nightlight.sh" 755
+setup_tmux
 
 log "All tracked configs applied."
