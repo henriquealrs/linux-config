@@ -94,6 +94,7 @@ sync_tree "wallpapers"
 
 copy_file "toggle_nightlight.sh" 755
 copy_file ".zshrc" 644
+copy_file ".zshenv" 644
 
 if [[ -d "$HOME/.oh-my-zsh/.git" ]]; then
   git -C "$HOME/.oh-my-zsh" pull --ff-only

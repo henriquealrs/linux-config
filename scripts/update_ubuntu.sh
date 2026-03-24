@@ -37,6 +37,7 @@ chmod +x "$HOME/.config/i3/screenshot.sh"
 chmod +x "$HOME/.config/polybar/launch.sh"
 
 install -Dm644 "$ROOT_DIR/../.zshrc" "$HOME/.zshrc"
+install -Dm644 "$ROOT_DIR/../.zshenv" "$HOME/.zshenv"
 if [[ -d "$HOME/.oh-my-zsh/.git" ]]; then
   git -C "$HOME/.oh-my-zsh" pull --ff-only
 else

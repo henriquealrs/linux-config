@@ -42,6 +42,7 @@ cp -r $dir/../.config/tmux ~/.config
 cp -r $dir/../wallpapers ~/
 cp -r $dir/../toggle_nightlight.sh ~
 install -m 644 "$dir/../.zshrc" ~/.zshrc
+install -m 644 "$dir/../.zshenv" ~/.zshenv
 
 mkdir -p ~/.local/bin
 install -m 755 "$dir/lock_screen.sh" ~/.local/bin/lock_screen.sh
