@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+install_codex_cli() {
+  if ! command -v npm >/dev/null 2>&1; then
+    printf '[install_ubuntu] Skipping Codex CLI install (npm not found)\n'
+    return
+  fi
+
+  sudo npm install -g @openai/codex
+  printf '[install_ubuntu] Installed Codex CLI\n'
+}
+
 sudo apt update
 sudo apt install -y \
   i3 \
@@ -26,9 +36,13 @@ sudo apt install -y \
   x11-xserver-utils \
   xsel \
   git \
+  nodejs \
+  npm \
   lldb 
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+install_codex_cli
 
 rsync -a --delete "$ROOT_DIR/../.config/i3/" "$HOME/.config/i3/"
 rsync -a --delete "$ROOT_DIR/../.config/dunst/" "$HOME/.config/dunst/"

@@ -27,6 +27,7 @@ bash scripts/install.sh
 This install script:
 
 - installs core packages with `pacman` and `yay`
+- installs the Codex CLI with `npm`
 - copies Hyprland, Waybar, Wofi, Ghostty, SwayNC, tmux, wallpapers, and desktop entries into `$HOME`
 - installs oh-my-zsh and copies the tracked [`.zshrc`](/home/henriquesilva/linux-config/.zshrc)
 - installs tmux TPM plus the configured tmux plugins
@@ -58,6 +59,7 @@ bash scripts/install_ubuntu.sh
 This install script:
 
 - installs the i3 desktop stack and supporting tools with `apt`
+- installs Node.js, npm, and the Codex CLI
 - installs `zsh` and `fonts-powerline` for the default shell and agnoster prompt
 - syncs i3, Polybar, Dunst, tmux, and wallpaper assets into `$HOME`
 - installs oh-my-zsh and copies the tracked [`.zshrc`](/home/henriquesilva/linux-config/.zshrc)
