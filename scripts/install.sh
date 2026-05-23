@@ -9,6 +9,16 @@ log() {
   printf '[install] %s\n' "$*"
 }
 
+install_codex_cli() {
+  if ! command -v npm >/dev/null 2>&1; then
+    log "Skipping Codex CLI install (npm not found)"
+    return
+  fi
+
+  sudo npm install -g @openai/codex
+  log "Installed Codex CLI"
+}
+
 # If problems refer to https://github.com/elifouts/Dotfiles.git
 sudo pacman -Syu --noconfirm --needed
 
@@ -37,6 +47,8 @@ fi
 
 yay -S --noconfirm --needed wl-clipboard otf-codenewroman-nerd hyprpicker blueman bluez pywal
 yay -S --noconfirm --needed zen-browser
+
+install_codex_cli
 
 
 cp -r $dir/../.config/hypr ~/.config
