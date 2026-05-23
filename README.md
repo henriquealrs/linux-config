@@ -39,7 +39,7 @@ To re-sync an existing Arch machine:
 bash scripts/update.sh
 ```
 
-`update.sh` reapplies tracked configs, wallpapers, desktop entries, `.zshrc`, oh-my-zsh, tmux plugins, and tmux user units.
+`update.sh` reapplies tracked configs, wallpapers, desktop entries, `lock_screen.sh`, `.zshrc`, oh-my-zsh, tmux plugins, and tmux user units. `scripts/update_arch.sh` remains as a compatibility wrapper to the same flow.
 
 ### Ubuntu
 
@@ -70,7 +70,7 @@ To re-sync an existing Ubuntu machine:
 bash scripts/update_ubuntu.sh
 ```
 
-`update_ubuntu.sh` reapplies tracked i3, Dunst, Polybar, tmux, wallpaper, and zsh config into `$HOME`, and updates or clones oh-my-zsh.
+`update_ubuntu.sh` reapplies tracked i3, Dunst, Polybar, tmux, wallpaper, `lock_screen.sh`, and zsh config into `$HOME`, updates or clones oh-my-zsh, reinstalls tmux plugins, and refreshes tmux user units.
 
 ## Shared Terminal Setup
 

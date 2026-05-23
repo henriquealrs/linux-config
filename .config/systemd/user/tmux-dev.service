@@ -6,7 +6,7 @@ After=default.target
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=%h/.local/bin/tmux-dev.sh
-ExecStop=/usr/bin/tmux kill-session -t dev
+ExecStop=-/usr/bin/tmux kill-session -t dev
 
 [Install]
 WantedBy=default.target
